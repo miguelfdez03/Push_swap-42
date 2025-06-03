@@ -6,7 +6,7 @@
 #    By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/29 14:49:37 by miguel-f          #+#    #+#              #
-#    Updated: 2025/05/30 13:31:20 by miguel-f         ###   ########.fr        #
+#    Updated: 2025/06/03 14:28:05 by miguel-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CFLAGS = -Wall -Wextra -Werror
 # Sources
 SRCS =	src/main.c src/utils.c src/parsing.c \
 		src/operations/push.c src/operations/swap.c \
-		src/operations/rotate.c src/operations/reverse_rotate.c
+		src/operations/rotate.c src/operations/reverse_rotate.c \
+		src/utils_verify.c src/algorithm/special_cases.c \
+		
 OBJS = $(SRCS:.c=.o)
 
 # Command cleaner

@@ -6,7 +6,7 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:18:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/05/30 13:24:03 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:33:12 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 /* Stack node structure */
 typedef struct s_node
 {
-    int				value;
-    int				index;
-    struct s_node	*next;
+	int				value;
+	int				index;
+	struct s_node	*next;
 }					t_node;
 
 /* Stack structure */
 typedef struct s_stack
 {
-    t_node	*top;
-    int		size;
-}			t_stack;
+	t_node			*top;
+	int				size;
+}					t_stack;
 
 void				error_exit(char *message);
 void				free_stack(t_stack *stack);
@@ -51,4 +51,13 @@ void				rr(t_stack *a, t_stack *b);
 void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
+bool				is_sorted(t_stack *stack);
+t_node				*find_min(t_stack *stack);
+t_node				*find_max(t_stack *stack);
+int					get_position(t_stack *stack, int value);
+int					stack_len(t_stack *stack);
+void				sort_two(t_stack *a);
+void				sort_three(t_stack *a);
+void				sort_five(t_stack *a, t_stack *b);
+void				push_swap_algorithm(t_stack *a, t_stack *b);
 #endif
