@@ -14,7 +14,6 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-# Sources
 SRCS =	src/main.c src/utils.c src/parsing.c \
 		src/operations/push.c src/operations/swap.c \
 		src/operations/rotate.c src/operations/reverse_rotate.c \
@@ -23,14 +22,11 @@ SRCS =	src/main.c src/utils.c src/parsing.c \
 		src/algorithm/cost_calculation.c src/algorithm/cost_execution.c
 OBJS = $(SRCS:.c=.o)
 
-# Command cleaner
 RM = rm -f
 
-# Libft
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# Rules
 all: $(NAME)
 
 $(LIBFT):

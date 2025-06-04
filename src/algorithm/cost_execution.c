@@ -12,10 +12,8 @@
 
 #include "../push_swap.h"
 
-// Ejecuta rotaciones combinadas (rr o rrr)
 static void	do_combined_rotations(t_stack *a, t_stack *b, int *cost_a, int *cost_b)
 {
-    // Rotaciones normales combinadas (rr)
     while (*cost_a > 0 && *cost_b > 0)
     {
         rr(a, b);
@@ -23,7 +21,6 @@ static void	do_combined_rotations(t_stack *a, t_stack *b, int *cost_a, int *cost
         (*cost_b)--;
     }
     
-    // Rotaciones inversas combinadas (rrr)
     while (*cost_a < 0 && *cost_b < 0)
     {
         rrr(a, b);
@@ -32,10 +29,8 @@ static void	do_combined_rotations(t_stack *a, t_stack *b, int *cost_a, int *cost
     }
 }
 
-// Ejecuta rotaciones individuales
 static void	do_individual_rotations(t_stack *a, t_stack *b, int cost_a, int cost_b)
 {
-    // Rotaciones para A
     while (cost_a > 0)
     {
         ra(a);
@@ -47,7 +42,6 @@ static void	do_individual_rotations(t_stack *a, t_stack *b, int cost_a, int cost
         cost_a++;
     }
     
-    // Rotaciones para B
     while (cost_b > 0)
     {
         rb(b);
@@ -60,7 +54,6 @@ static void	do_individual_rotations(t_stack *a, t_stack *b, int cost_a, int cost
     }
 }
 
-// Ejecuta el movimiento más barato
 void	execute_cheapest_move(t_stack *a, t_stack *b, int *cost_a, int *cost_b, int cheapest_idx)
 {
     int	move_cost_a;
@@ -69,12 +62,9 @@ void	execute_cheapest_move(t_stack *a, t_stack *b, int *cost_a, int *cost_b, int
     move_cost_a = cost_a[cheapest_idx];
     move_cost_b = cost_b[cheapest_idx];
     
-    // Ejecutar rotaciones combinadas cuando sea posible
     do_combined_rotations(a, b, &move_cost_a, &move_cost_b);
     
-    // Ejecutar rotaciones individuales restantes
     do_individual_rotations(a, b, move_cost_a, move_cost_b);
     
-    // Mover el elemento de B a A
     pa(a, b);
 }

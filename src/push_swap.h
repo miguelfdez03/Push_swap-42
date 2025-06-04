@@ -18,7 +18,6 @@
 # include <limits.h>
 # include <stdbool.h>
 
-/* Stack node structure */
 typedef struct s_node
 {
 	int				value;
@@ -26,7 +25,6 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-/* Stack structure */
 typedef struct s_stack
 {
 	t_node			*top;
