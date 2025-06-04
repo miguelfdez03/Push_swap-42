@@ -60,4 +60,12 @@ void				sort_two(t_stack *a);
 void				sort_three(t_stack *a);
 void				sort_five(t_stack *a, t_stack *b);
 void				push_swap_algorithm(t_stack *a, t_stack *b);
+int					ft_abs(int n);
+int					ft_max(int a, int b);
+int					ft_min(int a, int b);
+void				cost_algorithm(t_stack *a, t_stack *b);
+int					find_target_position(t_stack *a, int b_value);
+void				calculate_cost(t_stack *a, t_stack *b, int *cost_a, int *cost_b);
+int					find_cheapest_move(int *cost_a, int *cost_b, int size);
+void				execute_cheapest_move(t_stack *a, t_stack *b, int *cost_a, int *cost_b, int cheapest_idx);
 #endif

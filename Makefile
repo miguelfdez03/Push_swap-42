@@ -19,7 +19,8 @@ SRCS =	src/main.c src/utils.c src/parsing.c \
 		src/operations/push.c src/operations/swap.c \
 		src/operations/rotate.c src/operations/reverse_rotate.c \
 		src/utils_verify.c src/algorithm/special_cases.c \
-		
+		src/algorithm/cost_algorithm.c src/algorithm/utils_math.c \
+		src/algorithm/cost_calculation.c src/algorithm/cost_execution.c
 OBJS = $(SRCS:.c=.o)
 
 # Command cleaner

@@ -90,5 +90,5 @@ void	push_swap_algorithm(t_stack *a, t_stack *b)
 	else if (a->size <= 5)
 		sort_five(a, b);
 	else
-		ft_printf("TODO: Algoritmo de costes para %d elementos\n", a->size);
+		cost_algorithm(a, b);
 }
