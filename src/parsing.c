@@ -6,7 +6,7 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:11:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/05 13:51:09 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 18:02:55 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,58 @@ bool	has_duplicates(t_stack *stack)
 	return (false);
 }
 
+// Libera la memoria reservada por un array de strings (como el que devuelve ft_split).
+// Es útil para evitar fugas de memoria cuando se usa split para separar argumentos.
+bool	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+	return (false);
+}
+
+// Recorre un array de strings, valida cada uno como número y lo añade a la pila.
+// Si algún string no es válido, devuelve false.
+static bool	parse_and_add(char **args, t_stack *stack_a)
+{
+	int	j;
+
+	j = 0;
+	while (args[j])
+	{
+		if (!is_valid_number(args[j]))
+			return (false);
+		add_to_bottom(stack_a, create_node(ft_atoi(args[j])));
+		j++;
+	}
+	return (true);
+}
+
 // Lee los argumentos del programa, los valida y los añade a la pila A.
 // Si algún argumento es inválido, devuelve false.
 bool	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
-	int		i;
-	t_node	*node;
+	char	**split;
 
-	i = 1;
-	while (i < argc)
+	if (argc == 2)
 	{
-		if (!is_valid_number(argv[i]))
+		split = ft_split(argv[1], ' ');
+		if (!split || !split[0])
+			return (free_split(split));
+		if (!parse_and_add(split, stack_a))
+			return (free_split(split));
+		free_split(split);
+	}
+	else
+	{
+		if (!parse_and_add(&argv[1], stack_a))
 			return (false);
-		node = create_node(ft_atoi(argv[i]));
-		if (!node)
-			return (false);
-		add_to_bottom(stack_a, node);
-		i++;
 	}
 	return (true);
 }
