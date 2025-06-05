@@ -6,7 +6,7 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:18:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/03 14:33:12 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:39:50 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 void				cost_algorithm(t_stack *a, t_stack *b);
 int					find_target_position(t_stack *a, int b_value);
-void				calculate_cost(t_stack *a, t_stack *b, int *cost_a, int *cost_b);
+void				calculate_cost(t_stack *a, t_stack *b, int *cost_a,
+						int *cost_b);
 int					find_cheapest_move(int *cost_a, int *cost_b, int size);
-void				execute_cheapest_move(t_stack *a, t_stack *b, int *cost_a, int *cost_b, int cheapest_idx);
+void				execute_cheapest_move(t_stack *a, t_stack *b, int *cost_a,
+						int *cost_b);
+void				execute_move(t_stack *a, t_stack *b, int cost_a,
+						int cost_b);
 #endif

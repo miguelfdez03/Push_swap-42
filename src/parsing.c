@@ -6,7 +6,7 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:11:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/05/30 12:22:06 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:25:26 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,53 +39,28 @@ bool	is_valid_number(char *str)
 bool	has_duplicates(t_stack *stack)
 {
 	t_node	*current;
-	int		min;
-	int		max;
-	int		range;
-	bool	*hash_table;
-	
+	t_node	*checker;
+	int		i;
+	int		j;
+
 	if (!stack->top || stack->size <= 1)
 		return (false);
-	
-	min = find_min(stack)->value;
-	max = find_max(stack)->value;
-	range = max - min + 1;
-	
-	if (stack->size < 100 || range > 10000)
-	{
-		current = stack->top;
-		for (int i = 0; i < stack->size; i++)
-		{
-			t_node *checker = current->next;
-			for (int j = i + 1; j < stack->size; j++)
-			{
-				if (current->value == checker->value)
-					return (true);
-				checker = checker->next;
-			}
-			current = current->next;
-		}
-		return (false);
-	}
-	
-	hash_table = (bool *)ft_calloc(range, sizeof(bool));
-	if (!hash_table)
-		return (false);
-	
 	current = stack->top;
-	while (current)
+	i = 0;
+	while (i < stack->size)
 	{
-		int hash_index = current->value - min;
-		if (hash_table[hash_index])
+		checker = current->next;
+		j = i + 1;
+		while (j < stack->size)
 		{
-			free(hash_table);
-			return (true);
+			if (current->value == checker->value)
+				return (true);
+			checker = checker->next;
+			j++;
 		}
-		hash_table[hash_index] = true;
 		current = current->next;
+		i++;
 	}
-	
-	free(hash_table);
 	return (false);
 }
 
