@@ -6,18 +6,22 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:25:54 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/03 14:26:53 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:10 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Ordena una pila de 2 elementos si están en el orden incorrecto.
+// Es el caso más sencillo.
 void	sort_two(t_stack *a)
 {
 	if (a->top->value > a->top->next->value)
 		sa(a);
 }
 
+// Ordena una pila de 3 elementos usando el menor número de movimientos posible.
+// Considera todas las combinaciones para dejar la pila ordenada.
 void	sort_three(t_stack *a)
 {
 	int	first;
@@ -47,6 +51,8 @@ void	sort_three(t_stack *a)
 		rra(a);
 }
 
+// Lleva el valor más pequeño de la pila a la parte de arriba usando rotaciones.
+// Así se puede sacar fácilmente ese valor si hace falta.
 static void	move_min_to_top(t_stack *a, int min_value)
 {
 	int	min_pos;
@@ -64,6 +70,8 @@ static void	move_min_to_top(t_stack *a, int min_value)
 	}
 }
 
+// Ordena una pila de hasta 5 elementos usando la pila B como auxiliar.
+// Saca los valores más pequeños, ordena el resto y los vuelve a colocar.
 void	sort_five(t_stack *a, t_stack *b)
 {
 	t_node	*min;
@@ -79,6 +87,8 @@ void	sort_five(t_stack *a, t_stack *b)
 		pa(a, b);
 }
 
+// Elige el algoritmo de ordenación adecuado según el tamaño de la pila.
+// Usa los casos especiales para pilas pequeñas y el algoritmo de costes para las grandes.
 void	push_swap_algorithm(t_stack *a, t_stack *b)
 {
 	if (is_sorted(a))

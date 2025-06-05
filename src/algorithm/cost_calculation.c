@@ -6,12 +6,14 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:30:00 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/05 12:49:34 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:10 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Busca en la pila A el primer número que sea mayor que el valor de B.
+// Devuelve la posición de ese número, que es donde debería insertarse el valor de B.
 static void	find_closest_bigger(t_stack *a, int b_value, int *pos)
 {
 	t_node	*current;
@@ -34,6 +36,8 @@ static void	find_closest_bigger(t_stack *a, int b_value, int *pos)
 	}
 }
 
+// Busca el valor más pequeño en la pila A y devuelve su posición.
+// Esto se usa cuando no hay ningún número mayor que el valor de B.
 static void	find_min_value(t_stack *a, int *pos)
 {
 	t_node	*current;
@@ -56,6 +60,8 @@ static void	find_min_value(t_stack *a, int *pos)
 	}
 }
 
+// Calcula la posición ideal en la pila A donde debería ir el valor de B.
+// Si no hay ningún número mayor, devuelve la posición del mínimo.
 int	find_target_position(t_stack *a, int b_value)
 {
 	int	closest_bigger_pos;
@@ -70,6 +76,8 @@ int	find_target_position(t_stack *a, int b_value)
 	return (closest_bigger_pos);
 }
 
+// Calcula cuántos movimientos hacen falta para llevar cada elemento de B a su sitio correcto en A.
+// Guarda los costes de cada movimiento en dos arrays: uno para A y otro para B.
 void	calculate_cost(t_stack *a, t_stack *b, int *cost_a, int *cost_b)
 {
 	t_node	*current;
@@ -94,6 +102,8 @@ void	calculate_cost(t_stack *a, t_stack *b, int *cost_a, int *cost_b)
 	}
 }
 
+// Busca el índice del movimiento que requiere menos pasos en total.
+// Así se puede elegir siempre el movimiento más eficiente.
 int	find_cheapest_move(int *cost_a, int *cost_b, int size)
 {
 	int	min_cost;

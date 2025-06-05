@@ -6,12 +6,14 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:17:41 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/05 12:06:20 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:09 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Inicializa las pilas A y B y valida los argumentos de entrada.
+// Si hay algún error, muestra un mensaje y termina el programa.
 static int	init_stacks(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	a->top = NULL;
@@ -28,6 +30,9 @@ static int	init_stacks(int argc, char **argv, t_stack *a, t_stack *b)
 	return (1);
 }
 
+// Función principal del programa.
+// Se encarga de preparar las pilas, comprobar si ya están ordenadas
+// y ejecutar el algoritmo de ordenación si es necesario.
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;

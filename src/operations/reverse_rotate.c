@@ -6,12 +6,14 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:16:04 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/05/30 13:30:18 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:52:23 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Realiza una rotación inversa en la pila: el último elemento pasa a ser el primero.
+// Si la pila tiene menos de dos elementos, no hace nada.
 static void	reverse_rotate(t_stack *stack)
 {
 	t_node	*prev;
@@ -31,18 +33,21 @@ static void	reverse_rotate(t_stack *stack)
 	stack->top = last;
 }
 
+// Aplica la rotación inversa a la pila A y muestra "rra".
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
 	ft_printf("rra\n");
 }
 
+// Aplica la rotación inversa a la pila B y muestra "rrb".
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
 }
 
+// Aplica la rotación inversa a ambas pilas A y B a la vez y muestra "rrr".
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);

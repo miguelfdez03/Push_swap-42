@@ -6,12 +6,14 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:11:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/05 12:25:26 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:09 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Comprueba si una cadena es un número válido y está dentro del rango de int.
+// Así se evita meter datos incorrectos en la pila.
 bool	is_valid_number(char *str)
 {
 	int		i;
@@ -36,6 +38,8 @@ bool	is_valid_number(char *str)
 	return (true);
 }
 
+// Recorre la pila y comprueba si hay algún valor repetido.
+// Devuelve true si encuentra duplicados.
 bool	has_duplicates(t_stack *stack)
 {
 	t_node	*current;
@@ -64,6 +68,8 @@ bool	has_duplicates(t_stack *stack)
 	return (false);
 }
 
+// Lee los argumentos del programa, los valida y los añade a la pila A.
+// Si algún argumento es inválido, devuelve false.
 bool	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
 	int		i;
