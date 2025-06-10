@@ -6,14 +6,12 @@
 /*   By: miguel-f <miguel-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:11:02 by miguel-f          #+#    #+#             */
-/*   Updated: 2025/06/05 18:02:55 by miguel-f         ###   ########.fr       */
+/*   Updated: 2025/06/10 13:48:41 by miguel-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Comprueba si una cadena es un número válido y está dentro del rango de int.
-// Así se evita meter datos incorrectos en la pila.
 bool	is_valid_number(char *str)
 {
 	int		i;
@@ -32,14 +30,12 @@ bool	is_valid_number(char *str)
 			return (false);
 		i++;
 	}
-	num = ft_atoi(str);
+	num = ft_atol(str);
 	if (num > INT_MAX || num < INT_MIN)
 		return (false);
 	return (true);
 }
 
-// Recorre la pila y comprueba si hay algún valor repetido.
-// Devuelve true si encuentra duplicados.
 bool	has_duplicates(t_stack *stack)
 {
 	t_node	*current;
@@ -68,8 +64,6 @@ bool	has_duplicates(t_stack *stack)
 	return (false);
 }
 
-// Libera la memoria reservada por un array de strings (como el que devuelve ft_split).
-// Es útil para evitar fugas de memoria cuando se usa split para separar argumentos.
 bool	free_split(char **split)
 {
 	int	i;
@@ -84,8 +78,6 @@ bool	free_split(char **split)
 	return (false);
 }
 
-// Recorre un array de strings, valida cada uno como número y lo añade a la pila.
-// Si algún string no es válido, devuelve false.
 static bool	parse_and_add(char **args, t_stack *stack_a)
 {
 	int	j;
@@ -101,8 +93,6 @@ static bool	parse_and_add(char **args, t_stack *stack_a)
 	return (true);
 }
 
-// Lee los argumentos del programa, los valida y los añade a la pila A.
-// Si algún argumento es inválido, devuelve false.
 bool	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
 	char	**split;
