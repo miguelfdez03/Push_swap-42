@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+/*
+ * Función: init_stacks
+ * --------------------
+ * Inicializa las pilas A y B, y procesa los argumentos de entrada.
+ * 
+ * 1. Inicializa las pilas A y B como vacías
+ * 2. Analiza los argumentos de entrada y llena la pila A con los números
+ * 3. Verifica que no haya números duplicados en la pila A
+ * 
+ * argc: Número de argumentos
+ * argv: Array de strings con los argumentos
+ * a: Puntero a la pila A que se va a inicializar
+ * b: Puntero a la pila B que se va a inicializar
+ * 
+ * Retorna: 1 si la inicialización fue exitosa, 0 en caso de error
+ */
 static int	init_stacks(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	a->top = NULL;
@@ -31,6 +47,22 @@ static int	init_stacks(int argc, char **argv, t_stack *a, t_stack *b)
 	return (1);
 }
 
+/*
+ * Función: main
+ * -------------
+ * Punto de entrada principal del programa push_swap.
+ * 
+ * 1. Verifica que haya al menos un argumento
+ * 2. Inicializa las pilas A y B con los números de entrada
+ * 3. Si la pila A ya está ordenada, termina sin hacer nada
+ * 4. Si no está ordenada, ejecuta el algoritmo de ordenación
+ * 5. Libera la memoria utilizada por las pilas antes de terminar
+ * 
+ * argc: Número de argumentos
+ * argv: Array de strings con los argumentos
+ * 
+ * Retorna: 0 al finalizar correctamente
+ */
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;

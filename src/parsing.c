@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+/*
+ * Función: is_valid_number
+ * ------------------------
+ * Verifica si una cadena representa un número entero válido.
+ * 
+ * 1. Comprueba si la cadena está vacía
+ * 2. Permite un signo opcional (+ o -) al principio
+ * 3. Verifica que todos los caracteres sean dígitos
+ * 4. Comprueba que el número esté dentro del rango de un entero (INT_MIN a INT_MAX)
+ * 
+ * str: Cadena que se va a verificar
+ * 
+ * Retorna: true si la cadena representa un número entero válido, false en caso contrario
+ */
 bool	is_valid_number(char *str)
 {
 	int		i;
@@ -36,6 +50,18 @@ bool	is_valid_number(char *str)
 	return (true);
 }
 
+/*
+ * Función: has_duplicates
+ * -----------------------
+ * Verifica si hay números duplicados en una pila.
+ * 
+ * 1. Compara cada elemento con todos los elementos siguientes
+ * 2. Si encuentra un par de elementos con el mismo valor, hay duplicados
+ * 
+ * stack: Puntero a la pila que se va a verificar
+ * 
+ * Retorna: true si hay duplicados, false en caso contrario
+ */
 bool	has_duplicates(t_stack *stack)
 {
 	t_node	*current;
@@ -64,6 +90,18 @@ bool	has_duplicates(t_stack *stack)
 	return (false);
 }
 
+/*
+ * Función: free_split
+ * -------------------
+ * Libera la memoria asignada por la función ft_split.
+ * 
+ * 1. Recorre el array de cadenas y libera cada una individualmente
+ * 2. Finalmente libera el array principal
+ * 
+ * split: Array de cadenas que se va a liberar
+ * 
+ * Retorna: false, para facilitar su uso en retornos de error
+ */
 bool	free_split(char **split)
 {
 	int	i;
@@ -78,6 +116,20 @@ bool	free_split(char **split)
 	return (false);
 }
 
+/*
+ * Función: parse_and_add
+ * ----------------------
+ * Analiza un array de cadenas y añade los números válidos a la pila.
+ * 
+ * 1. Recorre el array de cadenas
+ * 2. Verifica que cada cadena sea un número válido
+ * 3. Convierte cada cadena a un número y lo añade a la pila
+ * 
+ * args: Array de cadenas con los números a analizar
+ * stack_a: Puntero a la pila donde se añadirán los números
+ * 
+ * Retorna: true si todos los números son válidos, false si hay algún error
+ */
 static bool	parse_and_add(char **args, t_stack *stack_a)
 {
 	int	j;
@@ -93,6 +145,21 @@ static bool	parse_and_add(char **args, t_stack *stack_a)
 	return (true);
 }
 
+/*
+ * Función: parse_arguments
+ * ------------------------
+ * Analiza los argumentos de entrada del programa y llena la pila A.
+ * 
+ * 1. Si hay un solo argumento (argc == 2), lo divide por espacios con ft_split
+ * 2. Si hay múltiples argumentos, los procesa directamente
+ * 3. Verifica que todos los argumentos sean números válidos
+ * 
+ * argc: Número de argumentos
+ * argv: Array de cadenas con los argumentos
+ * stack_a: Puntero a la pila A donde se añadirán los números
+ * 
+ * Retorna: true si todos los argumentos son válidos, false si hay algún error
+ */
 bool	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
 	char	**split;

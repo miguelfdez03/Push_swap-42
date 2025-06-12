@@ -12,6 +12,17 @@
 
 #include "../push_swap.h"
 
+/*
+ * Función: reverse_rotate
+ * -----------------------
+ * Rota todos los elementos de la pila hacia abajo.
+ * El último elemento se convierte en el primero (top),
+ * mientras que los demás elementos se mueven una posición hacia abajo.
+ * 
+ * stack: Puntero a la pila que se va a rotar inversamente
+ * 
+ * Si la pila tiene menos de 2 elementos, la función no hace nada.
+ */
 static void	reverse_rotate(t_stack *stack)
 {
 	t_node	*prev;
@@ -31,18 +42,46 @@ static void	reverse_rotate(t_stack *stack)
 	stack->top = last;
 }
 
+/*
+ * Función: rra
+ * ------------
+ * Rota todos los elementos de la pila A hacia abajo.
+ * Usa la función reverse_rotate e imprime "rra" para indicar que
+ * se ha realizado la operación.
+ * 
+ * a: Puntero a la pila A
+ */
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
 	ft_printf("rra\n");
 }
 
+/*
+ * Función: rrb
+ * ------------
+ * Rota todos los elementos de la pila B hacia abajo.
+ * Usa la función reverse_rotate e imprime "rrb" para indicar que
+ * se ha realizado la operación.
+ * 
+ * b: Puntero a la pila B
+ */
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
 }
 
+/*
+ * Función: rrr
+ * ------------
+ * Rota todos los elementos tanto de la pila A como de la pila B hacia abajo.
+ * Usa la función reverse_rotate para ambas pilas e imprime "rrr" para indicar que
+ * se ha realizado la operación doble.
+ * 
+ * a: Puntero a la pila A
+ * b: Puntero a la pila B
+ */
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);

@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+/*
+ * Función: is_sorted
+ * ------------------
+ * Verifica si una pila está ordenada de menor a mayor.
+ * 
+ * 1. Si la pila está vacía o tiene un solo elemento, se considera ordenada
+ * 2. Recorre la pila comparando cada elemento con el siguiente
+ * 3. Si encuentra un par de elementos donde el primero es mayor que el siguiente,
+ *    la pila no está ordenada
+ * 
+ * stack: Puntero a la pila que se va a verificar
+ * 
+ * Retorna: true si la pila está ordenada, false en caso contrario
+ */
 bool	is_sorted(t_stack *stack)
 {
 	t_node	*current;
@@ -28,6 +42,18 @@ bool	is_sorted(t_stack *stack)
 	return (true);
 }
 
+/*
+ * Función: find_min
+ * -----------------
+ * Encuentra el nodo con el valor mínimo en una pila.
+ * 
+ * 1. Recorre toda la pila
+ * 2. Mantiene un seguimiento del nodo con el valor mínimo encontrado hasta el momento
+ * 
+ * stack: Puntero a la pila donde se buscará el mínimo
+ * 
+ * Retorna: Puntero al nodo con el valor mínimo, o NULL si la pila está vacía
+ */
 t_node	*find_min(t_stack *stack)
 {
 	t_node	*current;
@@ -46,6 +72,18 @@ t_node	*find_min(t_stack *stack)
 	return (min_node);
 }
 
+/*
+ * Función: find_max
+ * -----------------
+ * Encuentra el nodo con el valor máximo en una pila.
+ * 
+ * 1. Recorre toda la pila
+ * 2. Mantiene un seguimiento del nodo con el valor máximo encontrado hasta el momento
+ * 
+ * stack: Puntero a la pila donde se buscará el máximo
+ * 
+ * Retorna: Puntero al nodo con el valor máximo, o NULL si la pila está vacía
+ */
 t_node	*find_max(t_stack *stack)
 {
 	t_node	*current;
@@ -64,6 +102,17 @@ t_node	*find_max(t_stack *stack)
 	return (max_node);
 }
 
+/*
+ * Función: get_position
+ * ---------------------
+ * Encuentra la posición (índice) de un nodo con un valor específico en la pila.
+ * La posición comienza desde 0 para el elemento superior (top).
+ * 
+ * stack: Puntero a la pila donde se buscará el valor
+ * value: El valor a buscar en la pila
+ * 
+ * Retorna: La posición del valor en la pila, o -1 si no se encuentra
+ */
 int	get_position(t_stack *stack, int value)
 {
 	t_node	*current;
@@ -83,6 +132,15 @@ int	get_position(t_stack *stack, int value)
 	return (-1);
 }
 
+/*
+ * Función: stack_len
+ * ------------------
+ * Devuelve el número de elementos en una pila.
+ * 
+ * stack: Puntero a la pila cuya longitud se quiere conocer
+ * 
+ * Retorna: El número de elementos en la pila, o 0 si la pila es NULL
+ */
 int	stack_len(t_stack *stack)
 {
 	if (!stack)
